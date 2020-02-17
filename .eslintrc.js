@@ -1,3 +1,11 @@
 module.exports = {
-  extends: 'zyehex'
+  extends: 'zyehex',
+  overrides: [
+    {
+      files: ['**/*.test.[tj]s'],
+      env: {
+        jest: true
+      }
+    }
+  ]
 };
