@@ -25,6 +25,21 @@ export default class Datewot {
     return this.date;
   }
 
+  /** Gets the number of days in the month */
+  public getDaysInMonth(): number {
+    switch (this.month) {
+      case 1:
+        return this.isLeapYear() ? 29 : 28;
+      case 3:
+      case 5:
+      case 8:
+      case 10:
+        return 30;
+      default:
+        return 31;
+    }
+  }
+
   /** Calculates if the year is a leap year */
   public isLeapYear(): boolean {
     if (this.year % 4 > 0) {

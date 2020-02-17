@@ -18,6 +18,35 @@ describe('datewot getters', () => {
   it('should have the correct date', () => {
     expect(date.getDate()).toBe(new Date().getDate());
   });
+
+  it('should have the correct days in the month', () => {
+    expect(date.setMonth(0).getDaysInMonth()).toBe(31);
+    expect(
+      date
+        .setFullYear(2019)
+        .setMonth(1)
+        .getDaysInMonth()
+    ).toBe(28);
+    expect(
+      date
+        .setFullYear(2020)
+        .setMonth(1)
+        .getDaysInMonth()
+    ).toBe(29);
+    expect(date.setMonth(2).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(3).getDaysInMonth()).toBe(30);
+    expect(date.setMonth(4).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(5).getDaysInMonth()).toBe(30);
+    expect(date.setMonth(6).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(7).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(8).getDaysInMonth()).toBe(30);
+    expect(date.setMonth(9).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(10).getDaysInMonth()).toBe(30);
+    expect(date.setMonth(11).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(12).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(14).getDaysInMonth()).toBe(31);
+    expect(date.setMonth(15).getDaysInMonth()).toBe(30);
+  });
 });
 
 describe('datewot setters', () => {
