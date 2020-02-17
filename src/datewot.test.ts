@@ -66,6 +66,65 @@ describe('datewot setters', () => {
     expect(date.getFullYear()).toBe(2013);
     expect(date.getMonth()).toBe(3);
   });
+
+  it('should set the month and overflow the year multiple times', () => {
+    date
+      .setFullYear(2001)
+      .setMonth(58)
+      .setDate(1);
+
+    expect(date.getFullYear()).toBe(2005);
+    expect(date.getMonth()).toBe(10);
+  });
+
+  it('should set the date', () => {
+    date
+      .setFullYear(2000)
+      .setMonth(0)
+      .setDate(1);
+
+    expect(date.getDate()).toBe(1);
+    expect(date.getMonth()).toBe(0);
+
+    date
+      .setFullYear(2000)
+      .setMonth(0)
+      .setDate(31);
+
+    expect(date.getDate()).toBe(31);
+    expect(date.getMonth()).toBe(0);
+  });
+
+  it('should set the date and overflow the month', () => {
+    date
+      .setFullYear(2000)
+      .setMonth(0)
+      .setDate(32);
+
+    expect(date.getDate()).toBe(1);
+    expect(date.getMonth()).toBe(1);
+  });
+
+  it('should set the date and overflow the month multiple times', () => {
+    date
+      .setFullYear(2001)
+      .setMonth(0)
+      .setDate(116);
+
+    expect(date.getDate()).toBe(26);
+    expect(date.getMonth()).toBe(3);
+  });
+
+  it('should set the date and overflow the month and year', () => {
+    date
+      .setFullYear(2001)
+      .setMonth(0)
+      .setDate(587);
+
+    expect(date.getDate()).toBe(10);
+    expect(date.getMonth()).toBe(7);
+    expect(date.getFullYear()).toBe(2002);
+  });
 });
 
 describe('leap year determination', () => {

@@ -67,4 +67,17 @@ export default class Datewot {
     this.year += Math.floor(month / 12);
     return this;
   }
+
+  /** Sets the date, one-indexed
+   * Will overflow the month
+   */
+  public setDate(date: number): Datewot {
+    let daysToAdd = date;
+    while (daysToAdd > this.getDaysInMonth()) {
+      daysToAdd -= this.getDaysInMonth();
+      this.setMonth(this.getMonth() + 1);
+    }
+    this.date = daysToAdd;
+    return this;
+  }
 }
