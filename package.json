@@ -1,0 +1,16 @@
+{
+  "name": "datewot",
+  "version": "1.0.0",
+  "description": "JavaScript Dates, without time",
+  "main": "./lib/main.js",
+  "repository": "https://github.com/treemmett/datewot",
+  "author": "Tregan Emmett <tregan@tregan.me>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "typescript": "^3.7.5"
+  }
+}
