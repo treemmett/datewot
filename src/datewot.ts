@@ -25,6 +25,19 @@ export default class Datewot {
     return this.date;
   }
 
+  /** Calculates if the year is a leap year */
+  public isLeapYear(): boolean {
+    if (this.year % 4 > 0) {
+      return false;
+    }
+
+    if (this.year % 100 === 0) {
+      return this.year % 400 === 0;
+    }
+
+    return true;
+  }
+
   /** Sets the year */
   public setFullYear(year: number): Datewot {
     this.year = year;
