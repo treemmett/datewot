@@ -72,12 +72,23 @@ export default class Datewot {
    * Will overflow the month
    */
   public setDate(date: number): Datewot {
-    let daysToAdd = date;
-    while (daysToAdd > this.getDaysInMonth()) {
-      daysToAdd -= this.getDaysInMonth();
-      this.setMonth(this.getMonth() + 1);
+    if (date > 0) {
+      let daysToAdd = date;
+      while (daysToAdd > this.getDaysInMonth()) {
+        daysToAdd -= this.getDaysInMonth();
+        this.setMonth(this.getMonth() + 1);
+      }
+      this.date = daysToAdd;
+    } else {
+      this.setMonth(this.getMonth() - 1);
+      let daysToRemove = Math.abs(date);
+      while (daysToRemove > this.getDaysInMonth()) {
+        daysToRemove -= this.getDaysInMonth();
+        this.setMonth(this.getMonth() - 1);
+      }
+      this.date = this.getDaysInMonth() - daysToRemove;
     }
-    this.date = daysToAdd;
+
     return this;
   }
 }

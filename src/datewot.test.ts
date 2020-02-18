@@ -149,6 +149,29 @@ describe('datewot setters', () => {
     expect(date.getMonth()).toBe(7);
     expect(date.getFullYear()).toBe(2002);
   });
+
+  it('should set the date in the opposite direction and overflow the month', () => {
+    date.setMonth(5);
+    date.setDate(-1);
+
+    expect(date.getMonth()).toBe(4);
+    expect(date.getDate()).toBe(30);
+  });
+
+  it('should set the date in the opposite direction and overflow the month and year', () => {
+    date.setFullYear(2020);
+    date.setMonth(3);
+    date.setDate(-567);
+
+    expect(date.getFullYear()).toBe(2018);
+    expect(date.getMonth()).toBe(8);
+    expect(date.getDate()).toBe(11);
+
+    date.setDate(-4919);
+    expect(date.getFullYear()).toBe(2005);
+    expect(date.getMonth()).toBe(2);
+    expect(date.getDate()).toBe(13);
+  });
 });
 
 describe('leap year determination', () => {
