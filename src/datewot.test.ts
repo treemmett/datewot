@@ -77,6 +77,30 @@ describe('datewot setters', () => {
     expect(date.getMonth()).toBe(10);
   });
 
+  it('should set the month in an opposite direction', () => {
+    date.setFullYear(2020).setMonth(5);
+
+    date.setMonth(-1);
+    expect(date.getMonth()).toBe(11);
+    expect(date.getFullYear()).toBe(2019);
+
+    date.setMonth(-8);
+    expect(date.getMonth()).toBe(4);
+    expect(date.getFullYear()).toBe(2018);
+
+    date.setMonth(-54);
+    expect(date.getMonth()).toBe(6);
+    expect(date.getFullYear()).toBe(2013);
+  });
+
+  it('should set the month in an opposite direction and overflow the year multiple times', () => {
+    date.setFullYear(2020).setMonth(5);
+    date.setMonth(-29);
+
+    expect(date.getMonth()).toBe(7);
+    expect(date.getFullYear()).toBe(2017);
+  });
+
   it('should set the date', () => {
     date
       .setFullYear(2000)

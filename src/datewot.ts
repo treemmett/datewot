@@ -63,7 +63,7 @@ export default class Datewot {
    * Will overflow year if greater than 11
    */
   public setMonth(month: number): Datewot {
-    this.month = month % 12;
+    this.month = month < 0 ? 12 - Math.abs(month % 12) : month % 12;
     this.year += Math.floor(month / 12);
     return this;
   }
