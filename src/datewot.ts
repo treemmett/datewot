@@ -25,6 +25,11 @@ export default class Datewot {
     return this.date;
   }
 
+  /** Gets the day of the week, zero-indexed */
+  public getDay(): number {
+    return new Date(this.year, this.month, this.date).getDay();
+  }
+
   /** Gets the number of days in the month */
   public getDaysInMonth(): number {
     switch (this.month) {

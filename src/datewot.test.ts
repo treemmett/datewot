@@ -47,6 +47,18 @@ describe('datewot getters', () => {
     expect(date.setMonth(14).getDaysInMonth()).toBe(31);
     expect(date.setMonth(15).getDaysInMonth()).toBe(30);
   });
+
+  it('should return the day of the week', () => {
+    date.setFullYear(2020);
+    date.setMonth(1);
+    date.setDate(5);
+    expect(date.getDay()).toBe(3);
+
+    date.setFullYear(2004);
+    date.setMonth(6);
+    date.setDate(18);
+    expect(date.getDay()).toBe(0);
+  });
 });
 
 describe('datewot setters', () => {
