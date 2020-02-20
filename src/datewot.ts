@@ -75,17 +75,31 @@ export default class Datewot {
   }
 
   /** Sets the year */
-  public setFullYear(year: number): Datewot {
+  public setFullYear(year: number, month?: number, date?: number): Datewot {
     this.year = year;
+
+    if (month !== undefined) {
+      this.setMonth(month);
+    }
+
+    if (date !== undefined) {
+      this.setDate(date);
+    }
+
     return this;
   }
 
   /** Sets the month, zero-indexed.
    * Will overflow year if greater than 11
    */
-  public setMonth(month: number): Datewot {
+  public setMonth(month: number, date?: number): Datewot {
     this.month = month < 0 ? 12 - Math.abs(month % 12) : month % 12;
     this.year += Math.floor(month / 12);
+
+    if (date !== undefined) {
+      this.setDate(date);
+    }
+
     return this;
   }
 

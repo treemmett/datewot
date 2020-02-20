@@ -67,9 +67,47 @@ describe('datewot setters', () => {
     expect(date.getFullYear()).toBe(2012);
   });
 
+  it('should set the date with an overloaded setYear', () => {
+    date.setFullYear(2018, 4);
+
+    expect(date.getFullYear()).toBe(2018);
+    expect(date.getMonth()).toBe(4);
+
+    date.setFullYear(2020, 7, 14);
+    expect(date.getFullYear()).toBe(2020);
+    expect(date.getMonth()).toBe(7);
+    expect(date.getDate()).toBe(14);
+
+    date.setFullYear(2020, 14, 36);
+    expect(date.getFullYear()).toBe(2021);
+    expect(date.getMonth()).toBe(3);
+    expect(date.getDate()).toBe(5);
+    expect(date.getDay()).toBe(1);
+  });
+
   it('should set the month', () => {
     date.setMonth(3);
     expect(date.getMonth()).toBe(3);
+  });
+
+  it('should set the date with an overloaded setMonth', () => {
+    date.setMonth(5, 14);
+    expect(date.getMonth()).toBe(5);
+    expect(date.getDate()).toBe(14);
+
+    date.setMonth(1, 24);
+    expect(date.getMonth()).toBe(1);
+    expect(date.getDate()).toBe(24);
+
+    date.setMonth(6, 56);
+    expect(date.getMonth()).toBe(7);
+    expect(date.getDate()).toBe(25);
+
+    date.setFullYear(2020);
+    date.setMonth(10, 116);
+    expect(date.getFullYear()).toBe(2021);
+    expect(date.getMonth()).toBe(1);
+    expect(date.getDate()).toBe(24);
   });
 
   it('should set the month and overflow the year', () => {
