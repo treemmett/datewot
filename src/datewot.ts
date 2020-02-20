@@ -1,4 +1,20 @@
 export default class Datewot {
+  private static daysAbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  private static monthAbr = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
+
   private year: number;
   private month: number;
   private date: number;
@@ -95,5 +111,20 @@ export default class Datewot {
     }
 
     return this;
+  }
+
+  /** Return date in english */
+  public toDateString(): string {
+    const day = Datewot.daysAbr[this.getDay()];
+    const month = Datewot.monthAbr[this.getMonth()];
+
+    return `${day} ${month} ${this.getDate()
+      .toString()
+      .padStart(2, '0')} ${this.getFullYear()}`;
+  }
+
+  /** Return date in english. Alias of `toDateString` */
+  public toString(): string {
+    return this.toDateString();
   }
 }

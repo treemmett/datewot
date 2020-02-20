@@ -205,3 +205,47 @@ describe('leap year determination', () => {
     });
   });
 });
+
+describe('datewot translations', () => {
+  it('should return the correct date string', () => {
+    expect(
+      date
+        .setFullYear(1993)
+        .setMonth(6)
+        .setDate(28)
+        .toDateString()
+    ).toBe('Wed Jul 28 1993');
+
+    expect(
+      date
+        .setFullYear(2018)
+        .setMonth(7)
+        .setDate(3)
+        .toDateString()
+    ).toBe('Fri Aug 03 2018');
+
+    expect(
+      date
+        .setFullYear(2020)
+        .setMonth(1)
+        .setDate(18)
+        .toDateString()
+    ).toBe('Tue Feb 18 2020');
+  });
+
+  it('should alias `toString`', () => {
+    date
+      .setFullYear(1993)
+      .setMonth(6)
+      .setDate(28);
+
+    expect(date.toString()).toBe('Wed Jul 28 1993');
+
+    date
+      .setFullYear(2016)
+      .setMonth(4)
+      .setDate(23);
+
+    expect(date.toString()).toBe(date.toDateString());
+  });
+});
